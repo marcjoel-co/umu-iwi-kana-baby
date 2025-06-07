@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu4aw2h4plevb"]
+
+[ext_resource type="Script" uid="uid://b45lf7y5p4t21" path="res://Scenes/jeep(right).gd" id="1_j3vtp"]
+[ext_resource type="Texture2D" uid="uid://bm8gle1xrntpe" path="res://imageResource/jeep-removebg-preview.png" id="1_o0ooj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3vtp"]
+size = Vector2(200.5, 73)
+
+[sub_resource type="Animation" id="Animation_wpmko"]
+resource_name = "JeepMovingRight"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1500, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i1qqo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g4ygp"]
+_data = {
+&"JeepMovingRight": SubResource("Animation_wpmko"),
+&"RESET": SubResource("Animation_i1qqo")
+}
+
+[node name="Jeep(right)" type="Node2D"]
+script = ExtResource("1_j3vtp")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatableBody2D"]
+texture_filter = 1
+position = Vector2(1309, 204)
+scale = Vector2(1.202, 1.202)
+texture = ExtResource("1_o0ooj")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(1311.75, 216.5)
+shape = SubResource("RectangleShape2D_j3vtp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_g4ygp")
+}

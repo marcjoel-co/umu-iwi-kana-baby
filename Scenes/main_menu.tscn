@@ -1,0 +1,130 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbygo18mio1am"]
+
+[ext_resource type="Texture2D" uid="uid://cxgr222kv0w5e" path="res://imageResource/MainMenuBackGround.png" id="1_48xlc"]
+[ext_resource type="Script" uid="uid://xd4ye000nj7f" path="res://Scenes/main_menu.gd" id="1_n45e2"]
+[ext_resource type="PackedScene" uid="uid://bmcsosae8unqn" path="res://Scenes/jeepMove.tscn" id="2_1ehe0"]
+[ext_resource type="FontFile" uid="uid://bxbttsvv4v1cq" path="res://Resources/Mitchell Demo.otf" id="2_ce3w2"]
+[ext_resource type="PackedScene" uid="uid://bu4aw2h4plevb" path="res://Scenes/jeep(right).tscn" id="3_1ehe0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_erv1k"]
+texture = ExtResource("1_48xlc")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ehe0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce3w2"]
+bg_color = Color(0.587566, 0.41987, 0.317365, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n45e2"]
+bg_color = Color(0.45437, 0.316277, 0.231515, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ehe0"]
+bg_color = Color(0.79813, 0.619462, 0.512136, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n45e2")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_erv1k")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -169.5
+offset_top = -223.0
+offset_right = 169.5
+offset_bottom = -123.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.345098, 0.235294, 0.168627, 1)
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 120
+text = "Panaginip"
+
+[node name="Jeep(Left)" parent="." instance=ExtResource("2_1ehe0")]
+texture_filter = 1
+position = Vector2(-413, 210)
+
+[node name="Jeep(right)" parent="." instance=ExtResource("3_1ehe0")]
+position = Vector2(0, 360)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -164.5
+offset_top = 80.0
+offset_right = 164.5
+offset_bottom = 187.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.235294, 0.168627, 1)
+theme_override_colors/font_hover_color = Color(0.345098, 0.235294, 0.168627, 1)
+theme_override_colors/font_color = Color(0.344798, 0.23467, 0.166944, 1)
+theme_override_colors/font_focus_color = Color(0.345098, 0.235294, 0.168627, 1)
+theme_override_colors/font_pressed_color = Color(0.345098, 0.235294, 0.168627, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1ehe0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n45e2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ehe0")
+text = "Play Game"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_hover_pressed_color = Color(0.345098, 0.235294, 0.168627, 1)
+theme_override_colors/font_hover_color = Color(0.345098, 0.235294, 0.168627, 1)
+theme_override_colors/font_color = Color(0.344798, 0.23467, 0.166944, 1)
+theme_override_colors/font_focus_color = Color(0.345098, 0.235294, 0.168627, 1)
+theme_override_colors/font_pressed_color = Color(0.345098, 0.235294, 0.168627, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1ehe0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ce3w2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n45e2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1ehe0")
+text = "Exit Game"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_exit_pressed"]
