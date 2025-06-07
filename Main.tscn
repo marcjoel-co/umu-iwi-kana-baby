@@ -1,24 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4qslnmxiel2y"]
+[gd_scene load_steps=6 format=3 uid="uid://c4qslnmxiel2y"]
 
-[ext_resource type="Script" uid="uid://bhhcjpffcfw4a" path="res://main.gd" id="1_7xttv"]
+[ext_resource type="Script" uid="uid://ch8qvht7w6w0m" path="res://main.gd" id="1_7xttv"]
 [ext_resource type="PackedScene" uid="uid://oidp4qgafv5a" path="res://HitBar.tscn" id="2_euj57"]
+[ext_resource type="Script" uid="uid://ctsxowraaqp58" path="res://miss.gd" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cnfv4705dpg50" path="res://Note.tscn" id="3_47vrg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(328.333, 553.268)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_7xttv")
 note_scene = ExtResource("3_47vrg")
 
+[node name="Miss" type="Area2D" parent="."]
+position = Vector2(425, 240)
+scale = Vector2(0.15, -0.169625)
+script = ExtResource("3_1bvp3")
+
+[node name="MissColl" type="CollisionShape2D" parent="Miss"]
+position = Vector2(-553.333, 11.7907)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_lquwl")
+
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
 [node name="HitBar" parent="." instance=ExtResource("2_euj57")]
-position = Vector2(120, -4)
+position = Vector2(418, 233)
+scale = Vector2(0.15, -0.169625)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="JudgmentLabel" type="Label" parent="."]
-offset_left = 250.0
-offset_top = -258.0
-offset_right = 472.0
-offset_bottom = -146.0
+offset_left = -525.0
+offset_top = -252.0
+offset_right = -303.0
+offset_bottom = -140.0
 text = "Score"
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = -525.0
+offset_top = -235.0
+offset_right = -342.0
+offset_bottom = -158.0
+text = "ScoreLabel
+
+"

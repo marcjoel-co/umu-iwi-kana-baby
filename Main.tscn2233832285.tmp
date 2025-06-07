@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4qslnmxiel2y"]
+
+[ext_resource type="Script" uid="uid://bhhcjpffcfw4a" path="res://main.gd" id="1_7xttv"]
+[ext_resource type="PackedScene" uid="uid://oidp4qgafv5a" path="res://HitBar.tscn" id="2_euj57"]
+[ext_resource type="PackedScene" uid="uid://cnfv4705dpg50" path="res://Note.tscn" id="3_47vrg"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_7xttv")
+note_scene = ExtResource("3_47vrg")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="HitBar" parent="." instance=ExtResource("2_euj57")]
+position = Vector2(414, 193)
+scale = Vector2(-0.046, 0.350777)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="JudgmentLabel" type="Label" parent="."]
+offset_left = -562.0
+offset_top = -301.0
+offset_right = -340.0
+offset_bottom = -189.0
+text = "Score"
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = -543.0
+offset_top = -262.0
+offset_right = -321.0
+offset_bottom = -150.0
+scale = Vector2(3.54686, 1.90186)
+text = "Score"
